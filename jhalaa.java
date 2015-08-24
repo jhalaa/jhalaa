@@ -6,34 +6,35 @@ import java.util.*;
  * Created by jhalaac on 24/08/15.
  */
 public class jhalaa {
-    int t =0;
-    String[] itemname;
-    float[] itemprice;
-    boolean[] imported;
-    int[] quantity;
-    boolean[] istaxable;
+    boolean t =true;
+    String[] itemname=new String[10];
+    float[] itemprice=new float[10];
+    boolean[] imported=new boolean[10];
+    int[] quantity=new int[10];
+    boolean[] istaxable=new boolean[10];
     int i=0;
      void accept()
     {
 
         Scanner s=new Scanner(System.in);
         System.out.println("tell us about your list");
-        while(t==0)
+        while(t)
         {
 
-            System.out.printf("item name:");
+            System.out.println("item name:");
             itemname[i]=s.nextLine();
-            System.out.printf("item price:");
+            System.out.println("item price:");
             itemprice[i]=s.nextFloat();
-            System.out.printf("item quantity:");
+            System.out.println("item quantity:");
             quantity[i]=s.nextInt();
             System.out.println("is it taxable,ie,is it book or food or medical stuff");
             istaxable[i]=s.nextBoolean();
             System.out.printf("is it imported?:");
             imported[i]=s.nextBoolean();
             i++;
-            System.out.println("press 0 to continue or 1 to print the bill");
-            t=s.nextInt();
+            System.out.println("do you want to add another item?true/false");
+            t=s.nextBoolean();
+            //System.out.println(t+" "+i);
 
         }
         }
@@ -41,7 +42,7 @@ public class jhalaa {
     {
         for(int j=0;j<i;j++)
         {
-            DecimalFormat df=new DecimalFormat("#.##");
+            //DecimalFormat df=new DecimalFormat("#.##");
             double totprice;
             double tax1=0;
             double tax2=0;
