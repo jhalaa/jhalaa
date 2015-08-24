@@ -5,12 +5,13 @@ import java.util.*;
  */
 public class jhalaa {
     int t =0;
-    String itemname[10];
-    float itemprice[10];
-    boolean imported[10];
-    int quantity[10];
+    String[] itemname;
+    float[] itemprice;
+    boolean[] imported;
+    int[] quantity;
+    boolean[] istaxable;
     int i=0;
-    void accept()
+     void accept()
     {
 
         Scanner s=new Scanner(System.in);
@@ -24,6 +25,8 @@ public class jhalaa {
             itemprice[i]=s.nextFloat();
             System.out.printf("item quantity:");
             quantity[i]=s.nextInt();
+            System.out.println("is it taxable");
+            istaxable[i]=s.nextBoolean();
             System.out.printf("is it imported?:");
             imported[i]=s.nextBoolean();
             i++;
@@ -36,9 +39,17 @@ public class jhalaa {
     {
         for(int j=0;j<i;j++)
         {
-            float totprice;
-            
+            double totprice;
+            totprice=itemprice[j]*quantity[j];
+            if(istaxable[j]){
+                totprice=1.1*totprice;
+            }
             System.out.println(quantity[j]+itemname[j]+":"+totprice);
         }
+    }
+
+    public static void main(String[] args) {
+        jhalaa j=new jhalaa();
+        j.accept()
     }
 }
