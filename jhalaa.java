@@ -12,7 +12,9 @@ public class jhalaa {
     boolean[] imported=new boolean[10];
     int[] quantity=new int[10];
     boolean[] istaxable=new boolean[10];
+    String[] nontaxable={"book","chocolate","pills"};
     int i=0;
+    String str;
      void accept()
     {
 
@@ -20,21 +22,20 @@ public class jhalaa {
         System.out.println("tell us about your list");
         while(t)
         {
-
             System.out.println("item name:");
             itemname[i]=s.nextLine();
             System.out.println("item price:");
             itemprice[i]=s.nextFloat();
             System.out.println("item quantity:");
             quantity[i]=s.nextInt();
-            System.out.println("is it taxable,ie,is it book or food or medical stuff");
+            System.out.println("is it taxable,ie,is it not book or food or medical stuff");
             istaxable[i]=s.nextBoolean();
             System.out.printf("is it imported?:");
             imported[i]=s.nextBoolean();
             i++;
             System.out.println("do you want to add another item?true/false");
             t=s.nextBoolean();
-            //System.out.println(t+" "+i);
+            //System.out.println(t+" "+i);*/
 
         }
         }
@@ -43,18 +44,21 @@ public class jhalaa {
         for(int j=0;j<i;j++)
         {
             //DecimalFormat df=new DecimalFormat("#.##");
-            double totprice;
-            double tax1=0;
-            double tax2=0;
+            float totprice;
+            float tax1=0;
+            float tax2=0;
             totprice=itemprice[j]*quantity[j];
             if(istaxable[j]){
-                tax1=1.1*totprice;
+                tax1=(101*totprice/100);
+                String.format("%0.2f",tax1);
+
                 //tax1=df.format(tax1);
 
             }
             if(imported[j])
             {
-                tax2=0.5*totprice;
+                tax2=(105*totprice/100);
+                String.format("%0.2f",tax2);
             }
             totprice=totprice+tax1+tax2;
             System.out.println(quantity[j]+itemname[j]+":"+totprice);
